@@ -24,3 +24,9 @@ vim.keymap.set('n', '<A-l>', '<C-w>l')
 vim.keymap.set('n', '<A-h>', '<C-w>h')
 vim.keymap.set('n', '<A-k>', '<C-w>k')
 vim.keymap.set('n', '<A-j>', '<C-w>j')
+
+-- Set line numbering
+vim.cmd("set number")
+vim.cmd("set relativenumber")
+
+vim.wo.fillchars='eob: ' -- Disable the ~ symbol for empty buffer
