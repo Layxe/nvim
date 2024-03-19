@@ -3,9 +3,10 @@
 Additional configuration:
   -- For tagbar run: sudo apt -y install exuberant-ctags
 
-]]--
+]]
+--
 
-require('settings')
+require("settings")
 
 -- Lazy package manager
 ---------------------------------------------------------------------------------------------------

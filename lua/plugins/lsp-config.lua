@@ -24,23 +24,27 @@ return {
         config = function()
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-            local lspconfig = require("lspconfig")
+            local lsp_configuration = require("lspconfig")
 
-            lspconfig.clangd.setup({
+            lsp_configuration.clangd.setup({
                 capabilities = capabilities
             })
 
-            lspconfig.html.setup({
+            lsp_configuration.html.setup({
                 capabilities = capabilities
             })
-            lspconfig.lua_ls.setup({
+            lsp_configuration.lua_ls.setup({
                 capabilities = capabilities
             })
 
-            vim.keymap.set("n", "gh", vim.lsp.buf.hover, {})
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-            vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-            vim.keymap.set("n", "<leader>da", vim.lsp.buf.code_action, {})
+            vim.keymap.set("n", "gh",         vim.lsp.buf.hover,       {desc = 'Show hover'      })
+            vim.keymap.set("n", "gd",         vim.lsp.buf.definition,  {desc = 'Go to definition'})
+            vim.keymap.set("n", "<leader>ra", vim.lsp.buf.references,  {desc = 'Find references' })
+            vim.keymap.set("n", "<leader>da", vim.lsp.buf.code_action, {desc = 'Code action'     })
+
+            -- Renames the current symbol
+            vim.keymap.set("n", "<leader>rr", vim.lsp.buf.rename, {desc = 'Rename symbol'})
+            vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, {desc = 'Rename symbol'})
         end,
     },
 }

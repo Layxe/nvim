@@ -4,8 +4,8 @@ return {
         'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
         'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
     },
-    init = function() 
-        vim.g.barbar_auto_setup = false 
+    init = function()
+        vim.g.barbar_auto_setup = false
         vim.keymap.set('n', '<A-1>', '<Cmd>BufferGoto 1<CR>')
         vim.keymap.set('n', '<A-2>', '<Cmd>BufferGoto 2<CR>')
         vim.keymap.set('n', '<A-3>', '<Cmd>BufferGoto 3<CR>')
@@ -22,7 +22,7 @@ return {
         vim.keymap.set('n', '<A-.>', '<Cmd>BufferMoveNext<CR>')
         vim.keymap.set('n', '<A-,>', '<Cmd>BufferMovePrevious<CR>')
 
-        vim.keymap.set('n', '<leader>w', '<Cmd>BufferClose<CR>')
+        vim.keymap.set('n', '<leader>w', ':q<CR>')
         vim.keymap.set('n', '<leader>W', '<Cmd>BufferWipeout<CR>')
     end,
     opts = {
