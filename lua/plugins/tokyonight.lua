@@ -14,7 +14,7 @@ local opts = {
     },
     sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
     day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
-    hide_inactive_statusline = false,     
+    hide_inactive_statusline = true,
     dim_inactive = false, -- dims inactive windows
     lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
 
@@ -30,7 +30,7 @@ local opts = {
     on_highlights = function(hl, c)
         hl.TelescopeNormal       = { bg = "none", fg = "none", }
         hl.TelescopeBorder       = { bg = "none", fg = "none", }
-        hl.TelescopePromptNormal = { bg = "none", } 
+        hl.TelescopePromptNormal = { bg = "none",              }
         hl.TelescopePromptBorder = { bg = "none", fg = "none", }
         hl.TelescopePromptTitle  = { bg = "none", fg = "none", }
         hl.TelescopePreviewTitle = { bg = "none", fg = "none", }
