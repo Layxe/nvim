@@ -6,12 +6,9 @@ return {
     lazy = true,
     init = function()
         vim.keymap.set(
-            'x',
-            '<leader>a',
+            'x', '<leader>a',
             function()
-                require'align'.align_to_char({
-                    length = 1,
-                })
+                require('align').align_to_char({ length = 1, })
             end,
             NS
         )
@@ -19,9 +16,7 @@ return {
         vim.keymap.set(
             'x', '<leader>A',
             function()
-                require'align'.align_to_string({
-                    regex = true
-                })
+                require'align'.align_to_string({ regex = true })
             end,
             NS
         )
@@ -32,6 +27,7 @@ return {
                 vim.cmd('normal! vip')
                 require'align'.align_to_string({ regex = true })
             end,
-        NS)
+            NS
+        )
     end
 }
