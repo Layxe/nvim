@@ -11,6 +11,7 @@ return {
         vim.keymap.set('t', '<A-l>',     [[<Cmd>wincmd l<CR>]]                )
         vim.keymap.set('t', 'jk',        [[<C-\><C-n><C-w>]]                  )
         vim.keymap.set('t', '<A-w>',     '<C-d>'                              )
+        vim.keymap.set('t', '<Esc>',     [[<C-\><C-n>]]                       )
 
         require('toggleterm').setup({ })
     end
