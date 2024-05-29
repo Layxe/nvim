@@ -9,7 +9,9 @@ return {
             highlight           = { enable = true },
             indent              = { enable = true },
             sync_install        = false,
-            auto_install        = true
+            auto_install        = true,
+            disable             = {'latex'},
+            additional_vim_regex_highlighting = {'latex', 'markdown'},
         })
     end
 }

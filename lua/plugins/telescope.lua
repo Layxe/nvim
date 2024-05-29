@@ -1,3 +1,8 @@
+--
+-- For live_grep to work run:
+--   sudo apt install ripgrep
+--
+
 return {
     {
         "nvim-telescope/telescope.nvim",
