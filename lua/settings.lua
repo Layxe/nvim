@@ -15,6 +15,8 @@ vim.cmd("set relativenumber")
 
  -- Disable the ~ symbol for empty buffer
 vim.wo.fillchars='eob: '
+-- Hide the | symbol for vertical splits
+vim.o.fillchars='vert: '
 
 -- Render whitespaces and tabs as dots
 vim.cmd("set list")
@@ -25,6 +27,11 @@ vim.cmd('set clipboard=unnamedplus')
 
 -- Disable continuation of comments
 vim.cmd('set formatoptions-=cro')
+
+-- Make cursor change for windows terminal
+vim.cmd("set t_SI=\"<Esc>[6 q\"")
+vim.cmd("set t_SR=\"<Esc>[3 q\"")
+vim.cmd("set t_EI=\"<Esc>[2 q\"")
 
 --[[ --------------------------- Addon settings --------------------------- ]]--
 
@@ -64,6 +71,19 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
   command = [[%s/\s\+$//e]],
 })
+
+--[[ ----------- Remap d to delete without copying to clipboard ----------- ]]--
+
+vim.keymap.set('n', 'd', '"_d')
+vim.keymap.set('v', 'd', '"_d')
+
+-- Keep copying behavior for dd
+vim.keymap.set('n', 'dd', 'Ydd', { noremap = true})
+
+--[[ ----------- Remap c to change without copying to clipboard ----------- ]]--
+
+vim.keymap.set('n', 'c', '"_c')
+vim.keymap.set('v', 'c', '"_c')
 
 --[[ -------------------- Window movement and handling -------------------- ]]--
 
