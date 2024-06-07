@@ -23,7 +23,7 @@ return {
         vim.keymap.set('n', '<A-,>', '<Cmd>BufferMovePrevious<CR>')
 
         vim.keymap.set('n', '<leader>w', ':q<CR>')
-        vim.keymap.set('n', '<leader>W', '<Cmd>BufferWipeout<CR>')
+        vim.keymap.set('n', '<leader>W', ':quitall<CR>')
     end,
     opts = {
         animation = true,
