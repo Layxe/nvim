@@ -15,7 +15,8 @@ return {
                 'clangd',
                 'lua_ls',
                 'ruff_lsp',
-            }
+                'tsserver'
+            },
         },
     },
     {
@@ -25,6 +26,9 @@ return {
             local capabilities      = require('cmp_nvim_lsp').default_capabilities()
             local lsp_configuration = require("lspconfig")
 
+            lsp_configuration.tsserver.setup({
+                capabilities = capabilities
+            })
             lsp_configuration.clangd.setup({
                 capabilities = capabilities
             })
@@ -47,14 +51,14 @@ return {
             vim.keymap.set("n", "<leader>rr", vim.lsp.buf.rename, {desc = 'Rename symbol'})
             vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, {desc = 'Rename symbol'})
         end,
-    },
-    {
-        "mfussenegger/nvim-lint"
-    },
-    {
-        "rshkarin/mason-nvim-lint",
-        config = function()
-            require("mason-nvim-lint").setup()
-        end
     }
+    -- {
+    --     "mfussenegger/nvim-lint",
+    -- },
+    -- {
+    --     "rshkarin/mason-nvim-lint",
+    --     config = function()
+    --         require("mason-nvim-lint").setup()
+    --     end
+    -- }
 }

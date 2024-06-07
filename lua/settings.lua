@@ -88,12 +88,20 @@ vim.keymap.set('v', 'c', '"_c')
 --[[ -------------------- Window movement and handling -------------------- ]]--
 
 -- Window movement using ALT
-vim.keymap.set('n', '<A-e>', '<C-w>p')
-vim.keymap.set('n', '<A-l>', '<C-w>l')
-vim.keymap.set('n', '<A-h>', '<C-w>h')
-vim.keymap.set('n', '<A-k>', '<C-w>k')
-vim.keymap.set('n', '<A-j>', '<C-w>j')
-vim.keymap.set('n', '<A-w>', ':q<CR>')
+
+local function define_window_movements(mode)
+    vim.keymap.set(mode, '<A-e>', '<C-w>p')
+    vim.keymap.set(mode, '<A-l>', '<C-w>l')
+    vim.keymap.set(mode, '<A-h>', '<C-w>h')
+    vim.keymap.set(mode, '<A-k>', '<C-w>k')
+    vim.keymap.set(mode, '<A-j>', '<C-w>j')
+    vim.keymap.set(mode, '<A-w>', ':q<CR>')
+end
+
+define_window_movements('n')
+define_window_movements('t')
+define_window_movements('i')
+
 
 -- Splitting and resizing windows
 vim.keymap.set('n', '<leader>sr', '<C-w>v')
