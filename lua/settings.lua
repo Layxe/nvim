@@ -41,7 +41,7 @@ local H2_HEADER_SYMBOL = '-'
 local H1_HEADER_WIDTH = 100
 local H2_HEADER_WIDTH = 80
 
-vim.cmd('set cc=100') -- Set column width to 80
+vim.cmd('set cc=100') -- Set column width to 100
 
 -- Keybindings
 -- #################################################################################################
