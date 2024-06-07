@@ -48,6 +48,9 @@ vim.cmd('set cc=100') -- Set column width to 100
 
 vim.g.mapleader = " "
 
+-- Map jk to escape
+vim.keymap.set('i', 'jk', '<Esc>')
+
 -- Better indentation settings
 vim.cmd("vnoremap < <gv")
 vim.cmd("vnoremap > >gv")
