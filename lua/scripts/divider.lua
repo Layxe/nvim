@@ -28,7 +28,9 @@ local line_comment_prefix_table = {
     ruby       = '#',
     perl       = '#',
     csharp     = '//',
-    Dockerfile = '#'
+    Dockerfile = '#',
+    toml       = '#',
+    json       = '#'
 }
 
 local block_comment_prefix_table = {
@@ -62,6 +64,8 @@ local block_comment_prefix_table = {
     perl       = {'=pod', '=cut'},
     csharp     = {'/*', '*/'},
     Dockerfile = {'#', '#'},
+    toml       = {'#', '#'},
+    json       = {'//', '//'},
 }
 
 local function get_current_line_comment_prefix()
@@ -71,7 +75,7 @@ local function get_current_line_comment_prefix()
         return line_comment_prefix_table[file_ending] .. ' '
     end
 
-    return nil
+    return '#'
 end
 
 local function get_current_block_comment_prefix()
@@ -81,7 +85,7 @@ local function get_current_block_comment_prefix()
         return block_comment_prefix_table[file_ending]
     end
 
-    return nil
+    return {'#', '#'}
 end
 
 local function insert_divider_centered_text(divider_char, divider_end_line)
