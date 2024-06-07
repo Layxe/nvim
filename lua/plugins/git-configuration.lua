@@ -39,6 +39,7 @@ return {
 
             -- Show difference to commit, when hovering over a hash
             vim.keymap.set('n', '<leader>ghc', 'viw"gy :Git diff <C-r>g HEAD -- <C-r>f<CR>', {desc = 'Show difference to commit'})
+            vim.keymap.set('n', '<leader>ghs', 'viw"gy :Git checkout <C-r>g', {desc = 'Checkout commit under cursor'})
         end
     }
 }
