@@ -15,7 +15,7 @@ return {
                 'clangd',
                 'lua_ls',
                 'ruff_lsp',
-                'tsserver'
+                'ts_ls'
             },
         },
     },
@@ -26,7 +26,7 @@ return {
             local capabilities      = require('cmp_nvim_lsp').default_capabilities()
             local lsp_configuration = require("lspconfig")
 
-            lsp_configuration.tsserver.setup({
+            lsp_configuration.ts_ls.setup({
                 capabilities = capabilities
             })
             lsp_configuration.clangd.setup({
