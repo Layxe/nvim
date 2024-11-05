@@ -15,8 +15,9 @@ return {
                 'clangd',
                 'lua_ls',
                 'ruff_lsp',
-                'ts_ls'
-            },
+                'ts_ls',
+                'rust-analyzer'
+            }
         },
     },
     {
