@@ -3,6 +3,14 @@
 This is my repository, for my custom `Neovim` setup. You can find all interesting files in the
 lua folder. It also includes a divider plugin, which inserts dividers for multiple languages.
 
+# Installation
+
+Install `Homebrew`
+
+Install `fzf`, `ripgrep` and `batcat`
+
+    brew install fzf ripgrep bat
+
 # Interesting Keybindings
 
 ## Navigation
