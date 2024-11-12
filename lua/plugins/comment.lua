@@ -4,6 +4,15 @@ return {
     config = function()
         require('Comment').setup()
 
+        local function toggle_line_comment()
+            return vim.v.count == 0
+                and '<Plug>(comment_toggle_linewise_current)'
+                or '<Plug>(comment_toggle_linewise_count)'
+        end
+
+        -- Toggle Ctrl + # to toggle a line comment
+        vim.keymap.set('n', '<C-\\>', toggle_line_comment, { expr = true })
+
         -- Configure Ctrl+# to create a linewise toggle with keeping the selected area
         vim.keymap.set('v', '<C-\\>', '<Plug>(comment_toggle_linewise_visual) gv')
         vim.keymap.set('v', '<C-#>', '<Plug>(comment_toggle_linewise_visual) gv')
