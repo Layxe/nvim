@@ -16,7 +16,7 @@ return {
                 'lua_ls',
                 'ruff_lsp',
                 'ts_ls',
-                'rust-analyzer'
+                'rust_analyzer'
             }
         },
     },
