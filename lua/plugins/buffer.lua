@@ -41,12 +41,22 @@ return {
     init = function()
         require('cokeline').setup()
 
+        local function close_current_buffer()
+            local target_buffer = require('cokeline.buffers').get_current()
+
+            if target_buffer == nil then
+                return
+            end
+
+            target_buffer:delete()
+        end
+
         vim.keymap.set("n", "gt", "<Plug>(cokeline-focus-next)", {silent = true})
         vim.keymap.set("n", "gT", "<Plug>(cokeline-focus-prev)", {silent = true})
         vim.keymap.set("n", "<leader>bf", "<Plug>(cokeline-pick-focus)")
-        vim.keymap.set("n", "<leader>bi", "<Plug>(cokeline-pick-focus)")
 
-        vim.keymap.set('n', '<leader>w', ':q<CR>')
+        vim.keymap.set('n', '<leader>q', ':q<CR>')
+        vim.keymap.set('n', '<leader>w', close_current_buffer)
         vim.keymap.set('n', '<leader>W', ':quitall<CR>')
 
         for i = 1,9 do

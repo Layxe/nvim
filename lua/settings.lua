@@ -33,6 +33,9 @@ vim.cmd("set t_SI=\"<Esc>[6 q\"")
 vim.cmd("set t_SR=\"<Esc>[3 q\"")
 vim.cmd("set t_EI=\"<Esc>[2 q\"")
 
+vim.keymap.set("n", "<leader>.", "<C-o>")
+vim.keymap.set("n", "<leader>-", "<C-i>")
+
 --[[ --------------------------- Addon settings --------------------------- ]]--
 
 local H1_HEADER_SYMBOL = '#'

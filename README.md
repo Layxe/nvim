@@ -13,6 +13,13 @@ Install `fzf`, `ripgrep` and `batcat`
 
 # Interesting Keybindings
 
+## Generic
+
+| Shortcut          | Description                                                                  |
+|-------------------|------------------------------------------------------------------------------|
+| <leader>A         | Align with complete regex string                                             |
+| <C-u>/<C-d>       | Scroll in autocomplete docs window                                           |
+
 ## Navigation
 
 | Shortcut          | Description                                                                  |
@@ -24,8 +31,11 @@ Install `fzf`, `ripgrep` and `batcat`
 
 | Shortcut          | Description                                                                  |
 |-------------------|------------------------------------------------------------------------------|
+| <leader>gp        | Preview hunk                                                                 |
 | <leader>gs        | Git stage hunk                                                               |
 | <leader>gb        | Git blame line                                                               |
+| <leader>gB        | Toggle Git blame line                                                        |
+| <leader>gd        | Diff this                                                                    |
 | <leader>ghf       | Git show file history                                                        |
 | <leader>ght       | Git show total history                                                       |
 | <leader>ghc       | Git show difference to commit under cursor                                   |
@@ -40,5 +50,9 @@ Install `fzf`, `ripgrep` and `batcat`
 | <leader>ra        | Find all language server references                                          |
 | <leader><C-g>     | Get all commits with telescope                                               |
 | <leader><C-s>     | Get git status with telescope                                                |
+| <leader><C-b>     | Get git branches with telescope                                              |
+| <leader><C-s>     | Get git status with telescope                                                |
+| <leader><C-S>     | Get git stash with telescope                                                 |
+| <leader><C-t>     | Get tree sitter symbols with telescope                                       |
 | <C-u>             | Scroll up in telescope                                                       |
 | <C-d>             | Scroll down in telescope                                                     |
