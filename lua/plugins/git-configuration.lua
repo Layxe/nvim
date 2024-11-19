@@ -1,19 +1,3 @@
-local gs = require('gitsigns')
-
-local function show_file_history()
-    vim.cmd('let @f = expand("%")')
-    vim.cmd(':Git log --follow %')
-end
-
-local function show_total_history()
-    vim.cmd('let @f = expand("%")')
-    vim.cmd(':Git log')
-end
-
-local function toggle_deleted()
-    gs.toggle_deleted()
-end
-
 return {
     {
         'tpope/vim-fugitive',
@@ -22,6 +6,22 @@ return {
         'lewis6991/gitsigns.nvim',
         config = function ()
             require('gitsigns').setup({})
+
+            local gs = require('gitsigns')
+
+            local function show_file_history()
+                vim.cmd('let @f = expand("%")')
+                vim.cmd(':Git log --follow %')
+            end
+
+            local function show_total_history()
+                vim.cmd('let @f = expand("%")')
+                vim.cmd(':Git log')
+            end
+
+            local function toggle_deleted()
+                gs.toggle_deleted()
+            end
 
             vim.keymap.set('n', '<leader>gp', ':Gitsigns preview_hunk<CR>',        {desc = 'Preview hunk'        })
             vim.keymap.set('n', '<leader>gi', ':Gitsigns preview_hunk_inline<CR>', {desc = 'Preview hunk inline' })

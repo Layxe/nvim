@@ -120,7 +120,8 @@ vim.keymap.set('n', '<leader>S', '<C-w>o') -- Close all other windows
 
 --[[ ------------------ Additional extension keybindings ------------------ ]]--
 
-vim.keymap.set('n', '<leader>b', '<Cmd>TagbarToggle<CR>')
+-- Disable tagbar for now
+-- vim.keymap.set('n', '<leader>b', '<Cmd>TagbarToggle<CR>')
 
 -- Scripts
 -- #################################################################################################

@@ -14,8 +14,9 @@ return {
             ensure_installed = {
                 'clangd',
                 'lua_ls',
-                'ruff_lsp',
-                'ts_ls'
+                'ruff',
+                'ts_ls',
+                'basedpyright'
             },
         },
     },
@@ -38,7 +39,10 @@ return {
             lsp_configuration.lua_ls.setup({
                 capabilities = capabilities
             })
-            lsp_configuration.ruff_lsp.setup({
+            lsp_configuration.ruff.setup({
+                capabilities = capabilities
+            })
+            lsp_configuration.basedpyright.setup({
                 capabilities = capabilities
             })
 
