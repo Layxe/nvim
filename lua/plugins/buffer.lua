@@ -44,5 +44,16 @@ return {
         vim.keymap.set("n", "gt", "<Plug>(cokeline-focus-next)", {silent = true})
         vim.keymap.set("n", "gT", "<Plug>(cokeline-focus-prev)", {silent = true})
         vim.keymap.set("n", "<leader>bf", "<Plug>(cokeline-pick-focus)")
+        vim.keymap.set("n", "<leader>bi", "<Plug>(cokeline-pick-focus)")
+
+        vim.keymap.set('n', '<leader>w', ':q<CR>')
+        vim.keymap.set('n', '<leader>W', ':quitall<CR>')
+
+        for i = 1,9 do
+            local key_comination = string.format("<A-%s>", i)
+            local command = string.format("<Plug>(cokeline-focus-%s)", i)
+            vim.keymap.set('n', key_comination, command)
+        end
+
     end
 }
