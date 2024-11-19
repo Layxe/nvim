@@ -15,9 +15,10 @@ return {
                 'clangd',
                 'lua_ls',
                 'ruff',
+                'basedpyright',
                 'ts_ls',
-                'basedpyright'
-            },
+                'rust_analyzer'
+            }
         },
     },
     {
