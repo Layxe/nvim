@@ -28,6 +28,7 @@ return {
             vim.keymap.set('n', '<leader>gb', ':Gitsigns blame_line<CR>',          {desc = 'Blame line'          })
             vim.keymap.set('n', '<leader>gd', ':Gitsigns diffthis<CR>',            {desc = 'Diff current changes'})
             vim.keymap.set('n', '<leader>gt', toggle_deleted,                      {desc = "Toggle deleted"      })
+            vim.keymap.set('n', '<leader>gB', ':Gitsigns toggle_current_line_blame')
 
             -- Staging keymaps
             vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_hunk<cr>',      {desc = 'Stage hunk'     })

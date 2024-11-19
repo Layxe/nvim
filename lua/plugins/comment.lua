@@ -2,7 +2,14 @@ return {
     'numToStr/Comment.nvim',
     lazy = false,
     config = function()
-        require('Comment').setup()
+        require('Comment').setup({
+            opleader = {
+                block = 'gB'
+            },
+            toggler = {
+                block = "gBc"
+            }
+        })
 
         local function toggle_line_comment()
             return vim.v.count == 0

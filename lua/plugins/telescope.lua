@@ -18,7 +18,10 @@ return {
             vim.keymap.set('n', '<C-l>', builtin.lsp_references, {})
             vim.keymap.set('n', '<Leader><C-x>', builtin.quickfix, {})
             vim.keymap.set('n', '<Leader><C-g>', builtin.git_commits, {})
+            vim.keymap.set('n', '<Leader><C-b>', builtin.git_branches, {})
             vim.keymap.set('n', '<Leader><C-s>', builtin.git_status, {})
+            vim.keymap.set('n', '<Leader><C-S>', builtin.git_stash, {})
+            vim.keymap.set('n', '<Leader><C-t>', builtin.treesitter, {})
 
             local telescope = require('telescope')
 
