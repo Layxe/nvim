@@ -2,7 +2,12 @@
 -- For live_grep to work run:
 --   sudo apt install ripgrep
 --
+
 return {
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+    },
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.6",
@@ -47,9 +52,21 @@ return {
                             ["<C-h>"] = require('telescope.actions').close
                         }
                     }
+                },
+                extensions = {
+                    fzf = {
+                        fuzzy = true,
+                        override_generic_sorter = true,
+                        override_file_sorter = true,
+                        case_mode = "smart_case"
+                    }
                 }
             })
+
+            telescope.load_extension("fzf")
+
         end,
+
     },
     {
         'nvim-telescope/telescope-ui-select.nvim',
