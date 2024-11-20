@@ -13,6 +13,8 @@ return {
             vim.keymap.set('t', 'jk',        [[<C-\><C-n><C-w>]]                  )
             vim.keymap.set('t', '<A-w>',     '<C-d>'                              )
             vim.keymap.set('t', '<Esc>',     [[<C-\><C-n>]]                       )
+            vim.keymap.set('t', '<C-u>',     [[<C-\><C-n><C-u>]]                  )
+            vim.keymap.set('t', '<C-d>',     [[<C-\><C-n><C-d>]]                  )
 
             require('toggleterm').setup({ })
         end
