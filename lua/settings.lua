@@ -62,9 +62,9 @@ vim.cmd("nnoremap > >>")
 vim.cmd("nnoremap < <<")
 
 -- Set CTRL+S to save
-vim.keymap.set('n', '<C-s>', '<Cmd>w<CR>')
-vim.keymap.set('x', '<C-s>', '<Cmd>w<CR>')
-vim.keymap.set('i', '<C-s>', '<Cmd>w<CR>')
+vim.keymap.set('n', '<C-s>', ':w<CR>', {silent = true})
+vim.keymap.set('x', '<C-s>', ':w<CR>', {silent = true})
+vim.keymap.set('i', '<C-s>', ':w<CR>', {silent = true})
 
 -- Set CTRL+N to remove search highlights
 vim.keymap.set('n', '<C-n>', ':nohl<CR>')

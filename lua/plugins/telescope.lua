@@ -17,8 +17,16 @@ return {
         config = function()
             local builtin = require('telescope.builtin')
 
+            local function get_visual_selection()
+                vim.cmd('noau normal! "vy"')
+                return vim.fn.getreg('v')
+            end
+
             vim.keymap.set('n', '<C-p>', builtin.find_files, {})
             vim.keymap.set('n', '<C-F>', builtin.live_grep, {})
+            vim.keymap.set('v', '<C-F>', function ()
+                builtin.grep_string({search = get_visual_selection()})
+            end, {})
             vim.keymap.set('n', '<C-l>', builtin.lsp_references, {})
             vim.keymap.set('n', '<Leader><C-x>', builtin.quickfix, {})
             vim.keymap.set('n', '<Leader><C-g>', builtin.git_commits, {})
@@ -26,6 +34,7 @@ return {
             vim.keymap.set('n', '<Leader><C-s>', builtin.git_status, {})
             vim.keymap.set('n', '<Leader><C-S>', builtin.git_stash, {})
             vim.keymap.set('n', '<Leader><C-t>', builtin.treesitter, {})
+            vim.keymap.set('n', '<Leader><C-m>', builtin.marks, {})
 
             local telescope = require('telescope')
 

@@ -10,6 +10,7 @@ return {
 
         harpoon:setup()
         vim.keymap.set("n", "<leader>ma", function()
+            vim.api.nvim_input("mh")
             harpoon:list():add()
         end)
         vim.keymap.set("n", "<leader>ml", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
