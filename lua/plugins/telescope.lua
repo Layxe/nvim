@@ -10,7 +10,7 @@ return {
     },
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.6",
+        tag = "0.1.8",
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
@@ -35,6 +35,7 @@ return {
             vim.keymap.set('n', '<Leader><C-S>', builtin.git_stash, {})
             vim.keymap.set('n', '<Leader><C-t>', builtin.treesitter, {})
             vim.keymap.set('n', '<Leader><C-m>', builtin.marks, {})
+            vim.keymap.set('n', '<Leader><C-o>', builtin.oldfiles, {})
 
             local telescope = require('telescope')
 

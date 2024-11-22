@@ -12,6 +12,13 @@ return {
             auto_install        = true,
             disable             = {'latex'},
             additional_vim_regex_highlighting = {'latex', 'markdown'},
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    node_incremental = "<CR>",
+                    node_decremental = "<BS>",
+                },
+            }
         })
     end
 }
