@@ -1,5 +1,7 @@
 _G.is_terminal_open = false
 
+local SWITCH_DELAY = 100
+
 -- /home/alex/projects/zephyrproject/poc-platform-redesign-firmware/app/src/ProToF/DeviceManager/ComponentLists/ComponentLists_CPUModem_MU24_101_HART.h:131:5:
 -- /home/alex/.bashrc
 
@@ -31,11 +33,6 @@ return {
             })
 
             vim.keymap.set('n', 'gf', function ()
-                -- Yank word under cursor into register f
-                -- vim.api.nvim_input("\"fyiW")
-                -- vim.api.nvim_input("\"fyiW")
-                --
-                -- local complete_word  = vim.fn.getreg('f')
                 local complete_word = vim.fn.expand("<cWORD>")
 
                 local path, line, column = string.match(complete_word, "(.-):(%d+):(%d+):")
@@ -53,15 +50,17 @@ return {
                     _G.is_terminal_open = false
                 end
 
-                vim.api.nvim_command("edit " .. path)
+                vim.api.nvim_command("find " .. path)
 
-                if line ~= nil then
-                    vim.api.nvim_input(line .. "G")
-                end
+                vim.defer_fn(function ()
+                    if line ~= nil then
+                        vim.api.nvim_input(line .. "G")
+                    end
 
-                if column ~= nil then
-                    vim.api.nvim_input(column .. "|")
-                end
+                    if column ~= nil then
+                        vim.api.nvim_input(column .. "|")
+                    end
+                end, SWITCH_DELAY)
             end)
         end
     }
