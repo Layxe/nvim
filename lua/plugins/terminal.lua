@@ -1,4 +1,7 @@
-local is_terminal_open = false
+_G.is_terminal_open = false
+
+-- /home/alex/projects/zephyrproject/poc-platform-redesign-firmware/app/src/ProToF/DeviceManager/ComponentLists/ComponentLists_CPUModem_MU24_101_HART.h:131:5:
+-- /home/alex/.bashrc
 
 return {
     {
@@ -14,41 +17,50 @@ return {
             vim.keymap.set('t', '<A-l>',     [[<Cmd>wincmd l<CR>]]                )
             vim.keymap.set('t', 'jk',        [[<C-\><C-n><C-w>]]                  )
             vim.keymap.set('t', '<A-q>',     '<C-d>'                              )
-            vim.keymap.set('t', '<A-w>',     '<Cmd>ToggleTerm<CR>'                )
             vim.keymap.set('t', '<Esc>',     [[<C-\><C-n>]]                       )
             vim.keymap.set('t', '<C-u>',     [[<C-\><C-n><C-u>]]                  )
             vim.keymap.set('t', '<C-d>',     [[<C-\><C-n><C-d>]]                  )
 
             require('toggleterm').setup({
                 on_open = function ()
-                    is_terminal_open = true
+                    _G.is_terminal_open = true
                 end,
                 on_close = function ()
-                    is_terminal_open = false
+                    _G.is_terminal_open = false
                 end,
             })
 
             vim.keymap.set('n', 'gf', function ()
                 -- Yank word under cursor into register f
-                vim.api.nvim_input("\"fyiW")
+                -- vim.api.nvim_input("\"fyiW")
+                -- vim.api.nvim_input("\"fyiW")
+                --
+                -- local complete_word  = vim.fn.getreg('f')
+                local complete_word = vim.fn.expand("<cWORD>")
 
-                local complete_word  = vim.fn.getreg('f')
-
-                local path, line = string.match(complete_word, "(.-):(%d+)")
+                local path, line, column = string.match(complete_word, "(.-):(%d+):(%d+):")
 
                 if path == nil then
-                    path = complete_word
+                    path, line = string.match(complete_word, "(.-):(%d+)")
+
+                    if path == nil then
+                        path = complete_word
+                    end
                 end
 
-                if is_terminal_open then
-                    -- Close terminal buffer
-                    vim.api.nvim_input("<A-w>")
+                if _G.is_terminal_open then
+                    vim.api.nvim_command("ToggleTerm")
+                    _G.is_terminal_open = false
                 end
 
-                vim.api.nvim_input(":edit " .. path .. "<CR>")
+                vim.api.nvim_command("edit " .. path)
 
                 if line ~= nil then
                     vim.api.nvim_input(line .. "G")
+                end
+
+                if column ~= nil then
+                    vim.api.nvim_input(column .. "|")
                 end
             end)
         end

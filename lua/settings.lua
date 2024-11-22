@@ -62,9 +62,13 @@ vim.cmd("nnoremap > >>")
 vim.cmd("nnoremap < <<")
 
 -- Set CTRL+S to save
-vim.keymap.set('n', '<C-s>', ':w<CR>', {silent = true})
-vim.keymap.set('x', '<C-s>', ':w<CR>', {silent = true})
-vim.keymap.set('i', '<C-s>', ':w<CR>', {silent = true})
+local function save_file()
+    vim.api.nvim_command('w')
+end
+
+vim.keymap.set('n', '<C-s>', save_file, {silent = true})
+vim.keymap.set('x', '<C-s>', save_file, {silent = true})
+vim.keymap.set('i', '<C-s>', save_file, {silent = true})
 
 -- Set CTRL+N to remove search highlights
 vim.keymap.set('n', '<C-n>', ':nohl<CR>')
@@ -101,7 +105,7 @@ local function define_window_movements(mode)
     vim.keymap.set(mode, '<A-h>', '<C-w>h')
     vim.keymap.set(mode, '<A-k>', '<C-w>k')
     vim.keymap.set(mode, '<A-j>', '<C-w>j')
-    vim.keymap.set(mode, '<A-w>', ':q<CR>')
+    vim.keymap.set(mode, '<A-q>', '<Esc>:q<CR>')
 end
 
 define_window_movements('n')
