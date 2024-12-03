@@ -3,6 +3,8 @@
 
 require("settings")
 
+vim.o.background = "dark"
+
 -- Lazy package manager
 ---------------------------------------------------------------------------------------------------
 
@@ -23,3 +25,4 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {}
 
 require("lazy").setup("plugins", opts)
+require("theme")
