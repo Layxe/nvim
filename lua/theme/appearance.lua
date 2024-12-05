@@ -27,6 +27,7 @@ vim.g.terminal_color_15 = colors.foreground
 utils.map_highlight { 'Normal', fg = colors.foreground, bg = colors.background }
 utils.map_highlight { 'Number', fg = colors.orange }
 utils.map_highlight { 'Keyword', fg = colors.purple }
+utils.map_highlight { 'Function', fg = colors.blue }
 utils.map_highlight { 'Constant', fg = colors.purple }
 utils.map_highlight { 'String', fg = colors.green0 }
 utils.map_highlight { 'Comment', fg = colors.gray }
@@ -80,15 +81,14 @@ utils.link_highlight('Title', 'Normal')
 utils.link_highlight('Debug', 'Normal')
 utils.link_highlight('Exception', 'Normal')
 utils.link_highlight('FoldColumn', 'Normal')
-utils.link_highlight('Macro', 'Normal')
 utils.link_highlight('ModeMsg', 'Normal')
 utils.link_highlight('MoreMsg', 'Normal')
 utils.link_highlight('Question', 'Normal')
+utils.link_highlight('Macro', 'Function')
 utils.link_highlight('Conditional', 'Keyword')
 utils.link_highlight('Statement', 'Keyword')
 utils.link_highlight('Operator', 'Keyword')
 utils.link_highlight('Structure', 'Keyword')
-utils.link_highlight('Function', 'Keyword')
 utils.link_highlight('Include', 'Keyword')
 utils.link_highlight('Type', 'Keyword')
 utils.link_highlight('Typedef', 'Keyword')
@@ -123,3 +123,8 @@ utils.link_highlight('Cursor', 'StatusLine')
 utils.link_highlight('Underlined', 'SpellRare')
 utils.link_highlight('rstEmphasis', 'SpellRare')
 utils.link_highlight('diffChanged', 'DiffChange')
+
+-- C Additional Syntax Highlighting
+-- #################################################################################################
+
+utils.map_highlight { '@lsp.typemod.macro.globalScope.c', fg = colors.blue }

@@ -12,6 +12,7 @@ return {
     green0 = "#485e30",
     red0   = "#942f2f",
     purple = "#5a4a78",
+    blue   = "#34548a",
 
     diffremove = "#e86868",
     diffadd    = "#3f919e",

@@ -3,7 +3,7 @@
 
 require("settings")
 
-vim.o.background = "dark"
+vim.o.background = "light"
 
 -- Lazy package manager
 ---------------------------------------------------------------------------------------------------
