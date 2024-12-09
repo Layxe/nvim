@@ -26,3 +26,6 @@ local opts = {}
 
 require("lazy").setup("plugins", opts)
 require("theme")
+
+-- Disable auto-commenting at the end of all settings
+vim.cmd('set formatoptions-=cro')

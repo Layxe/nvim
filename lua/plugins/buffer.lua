@@ -1,3 +1,5 @@
+local colors = require('theme/colorscheme')
+
 return {
     "willothy/nvim-cokeline",
     dependencies = {
@@ -6,7 +8,21 @@ return {
         "stevearc/resession.nvim"
     },
     init = function()
-        require('cokeline').setup()
+        if vim.o.background == "light" then
+            require('cokeline').setup({
+                show_if_buffers_are_at_least = 2,
+                default_hl = {
+                    bg = function(buffer)
+                        if buffer.is_focused then
+                            return colors.background
+                        end
+                        return colors.gray
+                    end
+                }
+            })
+        else
+            require('cokeline').setup()
+        end
 
         local function close_current_buffer()
 
