@@ -62,10 +62,10 @@ utils.map_highlight { 'BufferCurrentIcon', fg = colors.white, mod = 'bold' }
 utils.map_highlight { 'BufferVisibleIcon', fg = colors.white, mod = 'bold' }
 utils.map_highlight { 'BufferCurrentIndex', fg = colors.brown2 }
 
-utils.map_highlight { 'DiagnosticWarn', fg = colors.yellow0 }
-utils.map_highlight { 'DiagnosticWarnUnderline', mod = 'underline', sp = colors.yellow0 }
-utils.map_highlight { 'DiagnosticError', fg = colors.red2 }
-utils.map_highlight { 'DiagnosticErrorUnderline', mod = 'underline', sp = colors.red2 }
+utils.map_highlight { 'DiagnosticWarn', fg = colors.terminal_yellow }
+utils.map_highlight { 'DiagnosticWarnUnderline', mod = 'underline', sp = colors.terminal_yellow }
+utils.map_highlight { 'DiagnosticError', fg = colors.red0 }
+utils.map_highlight { 'DiagnosticErrorUnderline', mod = 'underline', sp = colors.red0 }
 
 utils.map_highlight { 'Added', fg = colors.green0 }
 utils.map_highlight { 'Changed', fg = colors.yellow0 }

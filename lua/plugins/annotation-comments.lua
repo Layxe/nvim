@@ -1,5 +1,18 @@
 local DEFAULT_NEOGEN_SETTINGS = {
-    snippet_engine = "luasnip"
+    snippet_engine = "luasnip",
+    placeholders_text = {
+        ["description"] = "TODO",
+        ["tparam"]      = "TODO",
+        ["parameter"]   = "TODO",
+        ["return"]      = "TODO",
+        ["class"]       = "TODO",
+        ["throw"]       = "TODO",
+        ["varargs"]     = "TODO",
+        ["type"]        = "TODO",
+        ["attribute"]   = "TODO",
+        ["args"]        = "TODO",
+        ["kwargs"]      = "TODO",
+    }
 }
 
 local function create_c_template(opts)
@@ -87,6 +100,8 @@ return {
             end
         })
         vim.api.nvim_set_keymap('n', '<leader>n', ':lua require("neogen").generate()<CR>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '<C-j>', '<Esc>:lua require("neogen").jump_next()<CR>i', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('i', '<C-k>', '<Esc>:lua require("neogen").jump_prev()<CR>i', { noremap = true, silent = true })
     end
 }
 

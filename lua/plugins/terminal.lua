@@ -26,6 +26,7 @@ return {
             require('toggleterm').setup({
                 on_open = function ()
                     _G.is_terminal_open = true
+                    vim.api.nvim_command("set cc=")
                 end,
                 on_close = function ()
                     _G.is_terminal_open = false

@@ -3,6 +3,9 @@
 
 --[[ -------------------------- NeoVim settings --------------------------- ]]--
 
+-- Set leader key to space
+vim.g.mapleader = " "
+
 -- Indentation
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
@@ -36,6 +39,8 @@ vim.cmd("set t_EI=\"<Esc>[2 q\"")
 vim.keymap.set("n", "<leader>.", "<C-o>")
 vim.keymap.set("n", "<leader>-", "<C-i>")
 
+vim.keymap.set("v", "Y", ":'<,'>w !clip.exe<CR>", {noremap = true})
+
 --[[ --------------------------- Addon settings --------------------------- ]]--
 
 local H1_HEADER_SYMBOL = '#'
@@ -48,8 +53,6 @@ vim.cmd('set cc=100') -- Set column width to 100
 
 -- Keybindings
 -- #################################################################################################
-
-vim.g.mapleader = " "
 
 -- Map jk to escape
 vim.keymap.set('i', 'jk', '<Esc>')
