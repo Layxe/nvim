@@ -97,8 +97,8 @@ return {
                         end
                     end,
                 },
-                ["<Tab>"] = custom_select_next,
-                ["<S-Tab>"] = custom_select_prev,
+                -- ["<Tab>"] = custom_select_next,
+                -- ["<S-Tab>"] = custom_select_prev,
                 ["<C-j>"] = custom_select_next,
                 ["<C-k>"] = custom_select_prev,
                 ["<Up>"] = custom_select_prev,
