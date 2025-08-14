@@ -39,17 +39,16 @@ local opts = {
         hl.LineNr = { fg = "#b2b8cf", }
     end,
 }
-if vim.o.background == "dark" then
-    return {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-        config = function()
-            local config = require("tokyonight").setup(opts)
+
+return {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function()
+        local config = require("tokyonight").setup(opts)
+        if vim.o.background == "dark" then
             vim.cmd.colorscheme "tokyonight"
         end
-    }
-else
-    return {}
-end
+    end
+}

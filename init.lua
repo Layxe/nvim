@@ -3,9 +3,6 @@
 
 require("settings")
 
--- vim.o.background = "dark"
-vim.o.background = "light"
-
 -- Lazy package manager
 ---------------------------------------------------------------------------------------------------
 
@@ -25,8 +22,42 @@ vim.opt.rtp:prepend(lazypath)
 
 local opts = {}
 
+local hour = tonumber(os.date("%H"))
+
+if hour >= 7 and hour < 19 then
+  vim.o.background = "light"
+else
+  vim.o.background = "dark"
+end
+
 require("lazy").setup("plugins", opts)
 require("theme")
 
 -- Disable auto-commenting at the end of all settings
 vim.cmd('set formatoptions-=cro')
+
+
+function ToggleBackground()
+    if vim.o.background == "dark" then
+        SetupLightColorscheme()
+        vim.o.background = "light"
+    else
+        vim.o.background = "dark"
+        vim.cmd("colorscheme tokyonight")
+    end
+
+    local custom_theme = require('lualine.themes.tokyo-city')
+
+    if vim.o.background == "dark" then
+        custom_theme = require("lualine.themes.tokyonight")
+    end
+
+    require("lualine").setup({
+        options = {
+            theme = custom_theme
+        }
+    })
+end
+
+-- Map to a key in normal mode
+vim.api.nvim_set_keymap('n', '<F5>', ':lua ToggleBackground()<CR>', { noremap = true, silent = true })
