@@ -12,12 +12,7 @@ return {
         opts = {
             auto_install = true,
             ensure_installed = {
-                'clangd',
                 'lua_ls',
-                'ruff',
-                'basedpyright',
-                'ts_ls',
-                'rust_analyzer'
             }
         },
     },
@@ -28,23 +23,23 @@ return {
             local capabilities      = require('cmp_nvim_lsp').default_capabilities()
             local lsp_configuration = require("lspconfig")
 
-            lsp_configuration.ts_ls.setup({
-                capabilities = capabilities
-            })
-            lsp_configuration.clangd.setup({
-                capabilities = capabilities
-            })
-            lsp_configuration.html.setup({
-                capabilities = capabilities
-            })
-            lsp_configuration.lua_ls.setup({
-                capabilities = capabilities
-            })
-            lsp_configuration.ruff.setup({
-                capabilities = capabilities
-            })
-            lsp_configuration.basedpyright.setup({
-                capabilities = capabilities
+            require("mason-lspconfig").setup_handlers({
+                function(server_name)
+                    lsp_configuration[server_name].setup({
+                        capabilities = capabilities
+                    })
+                end,
+                ["lua_ls"] = function()
+                    lsp_configuration.lua_ls.setup({
+                        capabilities = capabilities,
+                        settings = {
+                            Lua = {
+                                diagnostics = { globals = { "vim" } },
+                                workspace = { checkThirdParty = false },
+                            },
+                        },
+                    })
+                end,
             })
 
             vim.keymap.set("n", "gh",         vim.lsp.buf.hover,       {desc = 'Show hover'      })
@@ -57,13 +52,4 @@ return {
             vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, {desc = 'Rename symbol'})
         end,
     }
-    -- {
-    --     "mfussenegger/nvim-lint",
-    -- },
-    -- {
-    --     "rshkarin/mason-nvim-lint",
-    --     config = function()
-    --         require("mason-nvim-lint").setup()
-    --     end
-    -- }
 }
