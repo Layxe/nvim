@@ -5,6 +5,7 @@
 
 -- Set leader key to space
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- Indentation
 vim.cmd("set expandtab")

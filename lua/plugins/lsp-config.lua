@@ -8,13 +8,7 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
-        lazy = false,
-        opts = {
-            auto_install = true,
-            ensure_installed = {
-                'lua_ls',
-            }
-        },
+        lazy = false
     },
     {
         "neovim/nvim-lspconfig",
@@ -23,9 +17,10 @@ return {
             require('mason').setup()
             require('mason-lspconfig').setup({
                 ensure_installed = {
-                    "lua-language-server"
+                    "lua_ls"
                 },
-                automatic_enable = true
+                automatic_enable = true,
+                auto_install = true,
             })
 
             vim.lsp.config('*', {
