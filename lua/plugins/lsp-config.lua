@@ -20,26 +20,27 @@ return {
         "neovim/nvim-lspconfig",
         lazy = false,
         config = function()
-            local capabilities      = require('cmp_nvim_lsp').default_capabilities()
-            local lsp_configuration = require("lspconfig")
+            require('mason').setup()
+            require('mason-lspconfig').setup({
+                ensure_installed = {
+                    "lua-language-server"
+                },
+                automatic_enable = true
+            })
 
-            require("mason-lspconfig").setup_handlers({
-                function(server_name)
-                    lsp_configuration[server_name].setup({
-                        capabilities = capabilities
-                    })
-                end,
-                ["lua_ls"] = function()
-                    lsp_configuration.lua_ls.setup({
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                diagnostics = { globals = { "vim" } },
-                                workspace = { checkThirdParty = false },
-                            },
+            vim.lsp.config('*', {
+                -- Custom settings if needed
+            })
+
+            vim.lsp.config('lua_ls', {
+                settings = {
+                    Lua = {
+                        runtime = { version = 'Lua 5.1' },
+                        diagnostics = {
+                            globals = { 'bit', 'vim', 'it', 'describe', 'before_each', 'after_each' },
                         },
-                    })
-                end,
+                    },
+                },
             })
 
             vim.keymap.set("n", "gh",         vim.lsp.buf.hover,       {desc = 'Show hover'      })
