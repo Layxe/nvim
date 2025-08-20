@@ -11,6 +11,10 @@ Install `fzf`, `ripgrep` and `batcat`
 
     brew install fzf ripgrep bat
 
+**When running under WSL2 install win32yank for clipboard support**
+
+    winget install win32yank
+
 # Interesting Keybindings
 
 ## Generic
