@@ -48,7 +48,7 @@ return {
     config = function()
         local config = require("tokyonight").setup(opts)
         if vim.o.background == "dark" then
-            vim.cmd.colorscheme "tokyonight"
+            vim.cmd("colorscheme tokyonight")
         end
     end
 }

@@ -1,7 +1,7 @@
 -- My personal colorscheme based on 256-noir.
 vim.g.colors_name = 'graybeard'
 
-return {
+local COLORS = {
     foreground = "#343b59",
     border = "#e9e9eb",
     background = "#fbfbfd",
@@ -39,3 +39,11 @@ return {
     terminal_brightCyan = "#0f4b6e",
     terminal_brightWhite = "#828594",
 }
+
+COLORS.fg = COLORS.foreground
+COLORS.bg = COLORS.background
+COLORS.red = COLORS.red0
+COLORS.green = COLORS.green0
+COLORS.orange = COLORS.orange
+
+return COLORS

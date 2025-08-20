@@ -131,4 +131,6 @@ function SetupLightColorscheme()
     utils.map_highlight { '@lsp.typemod.macro.globalScope.c', fg = colors.blue }
 end
 
-SetupLightColorscheme()
+if vim.o.background == "light" then
+    SetupLightColorscheme()
+end
