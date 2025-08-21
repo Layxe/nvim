@@ -49,6 +49,8 @@ else
     SetupLightColorscheme()
 end
 
+SetupLuaLine()
+
 function ToggleBackground()
     if vim.o.background == "dark" then
         SetupLightColorscheme()

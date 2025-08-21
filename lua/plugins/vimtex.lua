@@ -22,7 +22,7 @@ return {
         vim.g.vimtex_compiler_latexmk = {
             aux_dir = "./.latexmk/aux",
             out_dir = "./build",
-            continuous = 0
+            continuous = 0,
         }
 
         vim.keymap.set("n", "<C-M-b>", ":VimtexCompile<CR>", { noremap = true, silent = true })
