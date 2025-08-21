@@ -6,13 +6,15 @@ return {
             local treesitter_config = require("nvim-treesitter.configs")
 
             treesitter_config.setup({
-                ensure_installed    = {"lua", "javascript", "c", "rust", "doxygen", "comment"},
-                highlight           = { enable = true },
+                ensure_installed    = {"lua", "comment"},
+                highlight           = {
+                    enable                            = true ,
+                    disable                           = {'latex'},
+                    additional_vim_regex_highlighting = {'latex', 'markdown'},
+                },
                 indent              = { enable = true },
                 sync_install        = false,
                 auto_install        = true,
-                disable             = {'latex'},
-                additional_vim_regex_highlighting = {'latex', 'markdown'},
                 incremental_selection = {
                     enable = true,
                     keymaps = {

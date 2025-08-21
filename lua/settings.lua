@@ -17,6 +17,8 @@ vim.cmd("set shiftwidth=4")
 vim.cmd("set number")
 vim.cmd("set relativenumber")
 
+vim.o.scrolloff = 5 -- Keep 5 lines above/below the cursor
+
  -- Disable the ~ symbol for empty buffer
 vim.wo.fillchars='eob: '
 -- Hide the | symbol for vertical splits
@@ -50,7 +52,15 @@ local H2_HEADER_SYMBOL = '-'
 local H1_HEADER_WIDTH = 100
 local H2_HEADER_WIDTH = 80
 
-vim.cmd('set cc=100') -- Set column width to 100
+vim.opt.colorcolumn = "100"
+
+-- Disable for TeX and BibTeX files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "tex", "bib" },
+  callback = function()
+    vim.opt_local.colorcolumn = ""
+  end,
+})
 
 -- Keybindings
 -- #################################################################################################
