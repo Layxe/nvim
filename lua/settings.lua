@@ -156,6 +156,29 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Disable tagbar for now
 -- vim.keymap.set('n', '<leader>b', '<Cmd>TagbarToggle<CR>')
 
+-- Buffer Settings
+-- #################################################################################################
+
+local function close_current_buffer()
+
+    if _G.is_terminal_open then
+        vim.api.nvim_input("<Cmd>ToggleTerm<CR>")
+        _G.is_terminal_open = false
+        return
+    end
+
+    vim.cmd('q!')
+end
+
+vim.keymap.set('n', '<leader>q', ':q<CR>')
+vim.keymap.set('n', '<leader>W', ':quitall<CR>')
+
+vim.keymap.set('n', '<leader>w', close_current_buffer)
+vim.keymap.set('n', '<A-w>',     close_current_buffer)
+vim.keymap.set('i', '<A-w>',     close_current_buffer)
+vim.keymap.set('t', '<A-w>',     close_current_buffer)
+
+
 -- Scripts
 -- #################################################################################################
 
