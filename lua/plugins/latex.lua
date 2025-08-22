@@ -1,3 +1,5 @@
+local COLORS = require("theme.colorscheme")
+
 local function is_wsl()
   local uname = vim.loop.os_uname().release:lower()
   return uname:find("microsoft") ~= nil or uname:find("wsl") ~= nil
@@ -73,6 +75,24 @@ return {
                 -- disable_keymaps: disable default keymaps
                 disable_keymaps = false,
             })
+
+            local illuminate_enabled = false
+
+            function ToggleIlluminate()
+              illuminate_enabled = not illuminate_enabled
+              if illuminate_enabled then
+                -- Re-enable illuminate
+                vim.cmd("IlluminateResume")
+              else
+                -- Disable and clear highlights
+                vim.cmd("IlluminatePause")
+              end
+            end
+
+            vim.keymap.set("n", "<leader>i", ToggleIlluminate, { noremap = true, silent = true, desc = "Toggle Illuminate" })
+            vim.cmd("hi IlluminatedWordText guifg=" .. COLORS.bg .. " gui=bold" .. " guibg=" .. COLORS.red0)
+            vim.cmd("IlluminatePause")
+
         end,
     },
     -- VimTeX
