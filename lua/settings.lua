@@ -139,6 +139,18 @@ vim.keymap.set('n', '<A-m>', '<C-w>+') -- Increase height
 vim.keymap.set('n', '<leader>ss', '<C-w>=') -- Same size for all windows
 vim.keymap.set('n', '<leader>S', '<C-w>o') -- Close all other windows
 
+--[[ --------------------------- Spellchecking ---------------------------- ]]--
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {
+        "tex", "bib", "markdown", "md", "gitcommit", "gitrebase", "txt", "rst", "asciidoc",
+    },
+    callback = function()
+        vim.cmd("setlocal spell spelllang=en")
+    end,
+})
+
+
 --[[ ------------------ Additional extension keybindings ------------------ ]]--
 
 -- Disable tagbar for now
