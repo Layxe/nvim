@@ -20,6 +20,7 @@ return {
             pattern = { "tex", "bib" },
             callback = function()
                 require("wrapping").soft_wrap_mode()  -- enable wrapping the plugin’s way
+                vim.cmd("set colorcolumn=-1") -- disable colorcolumn
             end,
         })
     end
@@ -109,14 +110,22 @@ return {
                 -- Set the viewer to Zathura
                 vim.g.vimtex_view_general_viewer = 'zathura'
             else
-                -- Set the viewer to Okular for WSL
                 vim.g.vimtex_view_method = 'sioyek'
+                vim.g.vimtex_view_sioyek_exe = 'sioyek.exe'
             end
 
             vim.g.vimtex_compiler_latexmk = {
                 aux_dir = "./.latexmk/aux",
                 out_dir = "./build",
                 continuous = 0,
+                options = {
+                    "-shell-escape",
+                    "-verbose",
+                    "-file-line-error",
+                    "-synctex=1",
+                    "-interaction=nonstopmode",
+                    "-pdflua"
+                },
             }
 
             vim.keymap.set("n", "<C-M-b>", ":VimtexCompile<CR>", { noremap = true, silent = true })

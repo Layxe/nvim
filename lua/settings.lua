@@ -54,14 +54,6 @@ local H2_HEADER_WIDTH = 80
 
 vim.opt.colorcolumn = "100"
 
--- Disable for TeX and BibTeX files
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "tex", "bib" },
-  callback = function()
-    vim.opt_local.colorcolumn = ""
-  end,
-})
-
 -- Keybindings
 -- #################################################################################################
 
