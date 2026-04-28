@@ -55,6 +55,19 @@ if (-not (Command-Exists "fzf")) {
     Write-Host "fzf already installed"
 }
 
+# ---------------------------- # Install LLVM (clang) # ----------------------------
+if (-not (Command-Exists "clang")) {
+    Write-Host "Installing LLVM (clang)..." -ForegroundColor Yellow
+    winget install -e --id LLVM.LLVM --accept-package-agreements --accept-source-agreements
+} else {
+    Write-Host "LLVM already installed"
+}
+
+$env:PATH = [System.Environment]::GetEnvironmentVariable("PATH","Machine") + ";" +
+            [System.Environment]::GetEnvironmentVariable("PATH","User")
+
+[System.Environment]::SetEnvironmentVariable("CC", "clang", "User")
+
 # ----------------------------
 # Install ripgrep
 # ----------------------------
