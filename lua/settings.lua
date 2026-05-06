@@ -1,6 +1,8 @@
 -- General settings
 -- #################################################################################################
 
+local osc52 = require("vim.ui.clipboard.osc52")
+
 --[[ -------------------------- NeoVim settings --------------------------- ]]--
 
 -- Set leader key to space
@@ -29,7 +31,41 @@ vim.cmd("set list")
 vim.cmd("set listchars=multispace:.,trail:.,tab:->")
 
 -- Set clipboard to system clipboard
-vim.cmd('set clipboard=unnamedplus')
+vim.o.clipboard = 'unnamedplus'
+
+local osc52 = require("vim.ui.clipboard.osc52")
+
+-- Use OSC52 for ssh copying
+if vim.env.SSH_CONNECTION then
+    local clipboard_cache = {
+      ["+"] = { lines = {}, regtype = "v" },
+      ["*"] = { lines = {}, regtype = "v" },
+    }
+
+    vim.g.clipboard = {
+      name = "osc52_unnamedplus",
+      copy = {
+        ["+"] = function(lines, regtype)
+          clipboard_cache["+"].lines = lines
+          clipboard_cache["+"].regtype = regtype
+          osc52.copy("+")(lines, regtype)
+        end,
+        ["*"] = function(lines, regtype)
+          clipboard_cache["*"].lines = lines
+          clipboard_cache["*"].regtype = regtype
+          osc52.copy("*")(lines, regtype)
+        end,
+      },
+      paste = {
+        ["+"] = function()
+          return clipboard_cache["+"].lines, clipboard_cache["+"].regtype
+        end,
+        ["*"] = function()
+          return clipboard_cache["*"].lines, clipboard_cache["*"].regtype
+        end,
+      },
+    }
+end
 
 -- Disable continuation of comments
 vim.cmd('set formatoptions-=cro')
