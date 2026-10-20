@@ -10,7 +10,7 @@ return {
 
         harpoon:setup()
         vim.keymap.set("n", "<leader>ma", function()
-            vim.api.nvim_input("mh")
+            vim.api.nvim_input("mH")
             harpoon:list():add()
         end)
         vim.keymap.set("n", "<leader>ml", function()
@@ -35,46 +35,22 @@ return {
             }):find()
         end
 
-        vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
+        vim.keymap.set("n", "<C-E>", function() toggle_telescope(harpoon:list()) end,
             { desc = "Open harpoon window" })
 
-        -- Jump to marker h, when pressing <leader>#
-        vim.keymap.set("n", "<leader>h", function()
-            -- check if mark 'h' exists in current buffer
-            local pos = vim.fn.getpos("'h")
-            local lnum, col = pos[2], pos[3]
+        vim.keymap.set("n", "<C-e>", function()
+            toggle_telescope(harpoon:list())
 
-            if lnum > 0 and col > 0 then
-                -- jump to 'h'
-                vim.cmd("normal! 'h")
-            else
-                toggle_telescope(harpoon:list())
+            vim.schedule(function()
+                vim.schedule(function()
+                    local pos = vim.api.nvim_buf_get_mark(0, "H")
 
-                -- This is a workaround, since the second buffer is the buffer,
-                -- we are jumping to
-                vim.api.nvim_create_autocmd("BufEnter", {
-                    once = true,
-                    callback = function()
-                        vim.api.nvim_create_autocmd("BufEnter", {
-                            once = true,
-                            callback = function()
-                                if vim.fn.line("'h") > 0 then
-                                    vim.cmd("normal! 'h")
-                                end
-                            end,
-                        })
-                    end,
-                })
-            end
-        end, { desc = "Jump to mark h or Harpoon menu" })
-
-        -- vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
-        -- vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
-        -- vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
-        -- vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
-
-        -- Toggle previous & next buffers stored within Harpoon list
-        -- vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
-        -- vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+                    -- pos = { row, col }
+                    if pos[1] > 0 then
+                        vim.cmd("normal! 'H")
+                    end
+                end)
+            end)
+        end, { desc = "Jump to mark H or Harpoon menu" })
     end
 }
