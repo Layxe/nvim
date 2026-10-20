@@ -1,8 +1,18 @@
+local function is_windows()
+  return vim.loop.os_uname().sysname:match("Windows") ~= nil
+end
+
+
 return {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
     build = ":TSUpdate",
     config = function()
+
+        if is_windows() then
+            return
+        end
+
         local parsers = {
             "bash","comment","c","cpp","css","diff","dockerfile","elixir",
             "git_config","gitcommit","gitignore","go","html","http",
